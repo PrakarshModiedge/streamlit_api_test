@@ -45,6 +45,7 @@ async def upload_pdf(file: UploadFile = File(...), db: Session = Depends(get_db)
         db.add(pdf_file)
         db.commit()
         db.refresh(pdf_file)
+        print("Susess")
         return {"message": "PDF uploaded successfully", "file_id": pdf_file.id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
